@@ -1,0 +1,22 @@
+version: '3'
+
+services:
+  echo:
+    image: jmalloc/echo-server
+
+  auth:
+    build: ./
+    #ports:
+    #  - 8080:8080
+    environment:
+      - GOOGLE_CLIENT_ID=<REPLACE_IT_WITH_YOUR_OWN_GOOGLE_CLIENT_ID>
+      - GOOGLE_CLIENT_SECRET=<REPLACE_IT_WITH_YOUR_OWN_GOOGLE_CLIENT_SECRET>
+
+  web:
+    image: nginx:alpine
+    restart: always
+    volumes:
+      - ./nginx.conf:/etc/nginx/conf.d/default.conf:ro
+    ports:
+      #- 7070:80
+      - 8080:80

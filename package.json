@@ -1,0 +1,43 @@
+{
+  "name": "micro-auth-request",
+  "version": "0.1.0",
+  "description": "Simple & fast authentication for Kubernetes ingress using Google OAuth2",
+  "main": "app.js",
+  "scripts": {
+    "start": "node app.js",
+    "test": "jest",
+    "test:coverage": "jest --coverage",
+    "test:coveralls": "jest --coverage && coveralls < coverage/lcov.info",
+    "lint": "eslint '**/*.js'"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github/abdollahpour/micro-auth-request"
+  },
+  "keywords": [
+    "ingress",
+    "kubernetes",
+    "google",
+    "oauth2"
+  ],
+  "author": "Hamed Abdollahpour",
+  "license": "Apache-2.0",
+  "licenses": [
+    {
+      "type": "Apache-2.0",
+      "url": "http://www.apache.org/licenses/LICENSE-2.0"
+    }
+  ],
+  "dependencies": {
+    "cookie-parser": "^1.4.5",
+    "express": "^4.17.1",
+    "googleapis": "^48.0.0",
+    "jsonwebtoken": "^8.5.1"
+  },
+  "devDependencies": {
+    "coveralls": "^3.0.11",
+    "eslint": "^6.8.0",
+    "jest": "^25.3.0",
+    "node-mocks-http": "^1.8.1"
+  }
+}
