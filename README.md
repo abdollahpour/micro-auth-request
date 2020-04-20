@@ -1,6 +1,6 @@
 <img src="logo.png" />
 
-[![MIT licensed](https://img.shields.io/badge/license-MIT-blue.svg)](./LICENSE)
+[![License](https://img.shields.io/badge/License-Apache%202.0-blue.svg)](https://opensource.org/licenses/Apache-2.0)
 [![Coverage Status](https://coveralls.io/repos/github/abdollahpour/micro-auth-request/badge.svg?branch=master)](https://coveralls.io/github/abdollahpour/micro-auth-request?branch=master)
 [![Build Status](https://secure.travis-ci.org/abdollahpour/micro-auth-request.svg?branch=master)](http://travis-ci.org/abdollahpour/micro-auth-request)
 
