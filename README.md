@@ -20,6 +20,8 @@ There are many ways to run micro-auth-request in your production environment.
 
 ## Using npm
 
+(This method does not work at the moment because [NPM registry](http://npm.im/micro-auth-request) has some issues)
+
     GOOGLE_CLIENT_ID=<YOUR_CLIENT_ID> GOOGLE_CLIENT_SECRET=<YOUR_CLIENT_SECRET> npx micro-auth-request
 
 ## Using docker
