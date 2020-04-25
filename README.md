@@ -1,4 +1,4 @@
-<img src="logo.png" />
+<img src="logo.png" alt="logo" width=360 />
 
 [![npm version](https://badge.fury.io/js/micro-auth-request.svg)](https://badge.fury.io/js/micro-auth-request)
 [![License](https://img.shields.io/badge/License-Apache%202.0-blue.svg)](https://opensource.org/licenses/Apache-2.0)
@@ -12,7 +12,7 @@
 You can use micro-auth-request just by providing Google client ID and secret without the need to set up any other tools. But if you need something more, for example, if you want to also include roles of the user you need to add it manually. We believe in  [Convention over configuration](https://en.wikipedia.org/wiki/Convention_over_configuration) it's easier to add a  Javascript file rather than complicated limited configuration files.
 
 # How it works?
-<img src="how-it-works.png" />
+<img src="how-it-works.png" alt="How it works" width=914 />
 
 [nginx auth_request](https://nginx.org/en/docs/http/ngx_http_auth_request_module.html) implements client authorization based on the result of a subrequest. The procedure is fairly simple, for any income request, nginx redirect the header of that request to micro-auth-request, based on the request headers (token, cookie, ...), it makes decistion if the user is authenticate or not. The original request will pass to the original service only if micro-auth-request return 200 to nginx. If authentication is required, micro-auth-request helps to use google for it and manage the procedure automatically.
 

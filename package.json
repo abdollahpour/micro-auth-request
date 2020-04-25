@@ -1,6 +1,6 @@
 {
   "name": "micro-auth-request",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "description": "Simple & fast authentication for Kubernetes ingress using Google OAuth2",
   "main": "app.js",
   "scripts": {
