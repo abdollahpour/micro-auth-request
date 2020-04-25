@@ -7,7 +7,7 @@
 
 # micro-auth-request
 
-[micro-auth-request](https://github.com/abdollahpour/micro-auth-request) is a tiny service that helps you using reverse proxy decouple the authentication from the services behind it. It's mainly designed to be used by [Nginx](https://www.nginx.com) or [nginx-ingress](https://github.com/kubernetes/ingress-nginx) (for Kubernetes) as reverse-proxy and Google as the authentication provider but you can also use it with other reverse proxies like [Traefik](https://docs.traefik.io) for you microservices or monolith that you have.
+[micro-auth-request](https://github.com/abdollahpour/micro-auth-request) is a tiny service that helps you to decouple the authentication from the services behind reverse proxy or ingress. It's mainly designed to be used by [Nginx](https://www.nginx.com) or [nginx-ingress](https://github.com/kubernetes/ingress-nginx) (for Kubernetes) as reverse-proxy and Google as the authentication provider but you can also use it with other reverse proxies like [Traefik](https://docs.traefik.io) for your microservices or monolith.
 
 You can use micro-auth-request just by providing Google client ID and secret without the need to set up any other tools. But if you need something more, for example, if you want to also include roles of the user you need to add it manually. We believe in  [Convention over configuration](https://en.wikipedia.org/wiki/Convention_over_configuration) it's easier to add a  Javascript file rather than complicated limited configuration files.
 
