@@ -1,3 +1,5 @@
+#!/usr/bin/env node
+
 const express = require('express');
 const cookieParser = require('cookie-parser')
 const jwtMiddleware = require('./src/middleware/jwt');
