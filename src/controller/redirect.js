@@ -7,8 +7,10 @@ module.exports = async (req, res) => {
     const user = await req.oauth.getUser(tokens.access_token);
 
     // If you want to enrich the users with some extra info like roles, here is the right place
-    
+    const state = JSON.parse(reqUrl.searchParams.get('state') || '{}');
+    const rd = state?.rd ? state.rd : '/';
+
     const token = sign(user);
-    res.writeHead(302, { 'Set-Cookie': `jwt=${token}; Path=/`, Location: '/' });
+    res.writeHead(302, { 'Set-Cookie': `jwt=${token}; Path=/`, Location: rd });
     res.end();
 }

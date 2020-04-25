@@ -1,44 +1,42 @@
 const { google } = require('googleapis');
-const { download } = require('../util/net');
+const fetch = require('node-fetch');
 
 const GOOGLE_CLIENT_ID = process.env.GOOGLE_CLIENT_ID;
 const GOOGLE_CLIENT_SECRET = process.env.GOOGLE_CLIENT_SECRET;
 
-let oauth2Client, authUrl;
+const getAuthClient = (reqUrl) => {
+    const url = new URL('/oauth2/callback', reqUrl);
+    return new google.auth.OAuth2(
+        GOOGLE_CLIENT_ID,
+        GOOGLE_CLIENT_SECRET,
+        url.toString()
+    );
+}
 
-const init = (reqUrl) => {
-    const url = new URL('/oauth2/redirect', reqUrl);
+const getAuthUrl = (reqUrl) => {
+    const url = new URL(reqUrl);
 
-    if (!oauth2Client) {
-        oauth2Client = new google.auth.OAuth2(
-            GOOGLE_CLIENT_ID,
-            GOOGLE_CLIENT_SECRET,
-            url.toString()
-        );
-        
-        const scopes = [
-            'https://www.googleapis.com/auth/userinfo.email'
-        ];
-        
-        authUrl = oauth2Client.generateAuthUrl({
-            access_type: 'offline',
-            scope: scopes
-        });
-    }
+    const scopes = [
+        'https://www.googleapis.com/auth/userinfo.email'
+    ];
+
+    return getAuthClient(reqUrl).generateAuthUrl({
+        access_type: 'offline',
+        scope: scopes,
+        state: JSON.stringify({rd: url.searchParams.get('rd')})
+    });
 }
 
 module.exports = {
     getAuthUrl: (reqUrl) => {
-        init(reqUrl);
-        return authUrl;
+        return getAuthUrl(reqUrl);
     },
     getToken: async (reqUrl) => {
-        init(reqUrl);
-        const { tokens } = await oauth2Client.getToken(reqUrl.searchParams.get('code'));
+        const { tokens } = await getAuthClient(reqUrl).getToken(reqUrl.searchParams.get('code'));
         return tokens;
     },
     getUser: async (token) => {
-        const body = await download('https://www.googleapis.com/oauth2/v1/userinfo?access_token=' + token);
-        return JSON.parse(body);
+        const res = await fetch('https://www.googleapis.com/oauth2/v1/userinfo?access_token=' + token);
+        return await res.json();
     }
 }

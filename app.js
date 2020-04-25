@@ -16,7 +16,7 @@ app.use(jwtMiddleware);
 app.use(oauthMiddleware);
 app.use((req, rest, next) => req.path.match(/\/oauth2\/(pass|auth)/) ? oauthMiddleware(req, rest, next) : next());
 app.get('/oauth2/start', startController);
-app.get('/oauth2/redirect', redirectController);
+app.get('/oauth2/callback', redirectController);
 app.get('/oauth2/pass', passController);
 app.get('/oauth2/auth', authController);
 
