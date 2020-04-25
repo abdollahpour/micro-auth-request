@@ -10,6 +10,7 @@
     "test:coveralls": "jest --coverage && coveralls < coverage/lcov.info",
     "lint": "eslint '**/*.js'"
   },
+  "bin": "./app.js",
   "repository": {
     "type": "git",
     "url": "https://github/abdollahpour/micro-auth-request"

@@ -1,5 +1,6 @@
 <img src="logo.png" />
 
+[![npm version](https://badge.fury.io/js/micro-auth-request.svg)](https://badge.fury.io/js/micro-auth-request)
 [![License](https://img.shields.io/badge/License-Apache%202.0-blue.svg)](https://opensource.org/licenses/Apache-2.0)
 [![Coverage Status](https://coveralls.io/repos/github/abdollahpour/micro-auth-request/badge.svg?branch=master)](https://coveralls.io/github/abdollahpour/micro-auth-request?branch=master)
 [![Build Status](https://secure.travis-ci.org/abdollahpour/micro-auth-request.svg?branch=master)](http://travis-ci.org/abdollahpour/micro-auth-request)
@@ -19,8 +20,6 @@ You can use micro-auth-request just by providing Google client ID and secret wit
 There are many ways to run micro-auth-request in your production environment.
 
 ## Using npm
-
-(This method does not work at the moment because [NPM registry](http://npm.im/micro-auth-request) has some issues)
 
     GOOGLE_CLIENT_ID=<YOUR_CLIENT_ID> GOOGLE_CLIENT_SECRET=<YOUR_CLIENT_SECRET> npx micro-auth-request
 
