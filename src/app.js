@@ -2,12 +2,12 @@
 
 const express = require('express');
 const cookieParser = require('cookie-parser')
-const jwtMiddleware = require('./src/middleware/jwt');
-const oauthMiddleware = require('./src/middleware/oauth');
-const redirectController = require('./src/controller/redirect');
-const startController = require('./src/controller/start');
-const passController = require('./src/controller/pass');
-const authController = require('./src/controller/auth');
+const jwtMiddleware = require('./middleware/jwt');
+const oauthMiddleware = require('./middleware/oauth');
+const redirectController = require('./controller/redirect');
+const startController = require('./controller/start');
+const passController = require('./controller/pass');
+const authController = require('./controller/auth');
 
 const HOST = process.env.HOST || '0.0.0.0';
 const PORT = process.env.PORT || 8080;
