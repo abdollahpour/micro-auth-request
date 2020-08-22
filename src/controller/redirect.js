@@ -11,6 +11,6 @@ module.exports = async (req, res) => {
     const rd = state?.rd ?? '/';
 
     const token = sign(user);
-    res.writeHead(302, { 'Set-Cookie': `jwt=${token}; Path=/`, Location: rd });
+    res.writeHead(302, { 'Set-Cookie': `jwt=${token}; Path=/; Secure; HttpOnly`, Location: rd });
     res.end();
 }

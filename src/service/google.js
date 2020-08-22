@@ -1,5 +1,6 @@
 const { google } = require('googleapis');
 const fetch = require('node-fetch');
+const logger = require('../util/logger');
 
 const GOOGLE_CLIENT_ID = process.env.GOOGLE_CLIENT_ID;
 const GOOGLE_CLIENT_SECRET = process.env.GOOGLE_CLIENT_SECRET;
@@ -23,19 +24,24 @@ const getAuthUrl = (reqUrl) => {
     return getAuthClient(reqUrl).generateAuthUrl({
         access_type: 'offline',
         scope: scopes,
-        state: JSON.stringify({rd: url.searchParams.get('rd')})
+        state: JSON.stringify({ rd: url.searchParams.get('rd') })
     });
 }
 
 module.exports = {
     getAuthUrl,
     getToken: async (reqUrl) => {
+        logger.debug(`Try to fetch tokens for reqUrl ${reqUrl}`);
         const url = new URL(reqUrl);
         const { tokens } = await getAuthClient(url).getToken(url.searchParams.get('code'));
+        logger.debug(`Tokens fetched reqUrl ${reqUrl}`);
         return tokens;
     },
     getUser: async (token) => {
+        logger.debug(`Try to fetch user for token ${token.substring(0, 10)}***`);
         const res = await fetch('https://www.googleapis.com/oauth2/v1/userinfo?access_token=' + token);
-        return await res.json();
+        const user = await res.json();
+        logger.debug(`User fetched token ${token.substring(0, 10)}***`, { user });
+        return user;
     }
 }
