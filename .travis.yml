@@ -1,3 +1,4 @@
+dist: trusty
 sudo: false
 
 language: node_js
@@ -5,9 +6,48 @@ language: node_js
 node_js:
   - 14
 
-script:
-  - npm run lint
-  - npm run test:coveralls
+jobs:
+  fast_finish: true
+  include:
+    - stage: install
+      script:
+        - npm install
+    - stage: check
+      script:
+        - npm run lint
+    - stage: test production
+      script:
+        - npm run test:coveralls
+    - stage: test dev
+      script:
+        - npm run test
+    - stage: deploy production
+      script:
+        - npm run prepublish
+        - echo "$DOCKER_PASSWORD" | docker login -u "$DOCKER_USERNAME" --password-stdin
+        - docker build -t "$DOCKER_USERNAME/$DOCKER_IMAGE:$TRAVIS_COMMIT" .
+        - docker push "$DOCKER_USERNAME/$DOCKER_IMAGE:$TRAVIS_COMMIT"
+        - docker tag "$DOCKER_USERNAME/$DOCKER_IMAGE:$TRAVIS_COMMIT" "$DOCKER_USERNAME/$DOCKER_IMAGE"
+        - docker push "$DOCKER_USERNAME/$DOCKER_IMAGE"
+    - stage: deploy dev
+      script:
+        - npm run prepublish
+        - echo "$DOCKER_PASSWORD" | docker login -u "$DOCKER_USERNAME" --password-stdin
+        - docker build -t "$DOCKER_USERNAME/$DOCKER_IMAGE:$TRAVIS_COMMIT" .
+        - docker push "$DOCKER_USERNAME/$DOCKER_IMAGE:$TRAVIS_COMMIT"
 
+stages:
+  - name: install
+  - name: check
+  - name: test production
+    if: branch = master
+  - name: test dev
+    if: branch != master
+  - name: deploy production
+    if: branch = master
+  - name: deploy dev
+    if: branch != master
+
+cache: npm
 notifications:
-  email: false
+  email: true
