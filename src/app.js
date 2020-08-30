@@ -23,3 +23,4 @@ app.get('/oauth2/pass', passController);
 app.get('/oauth2/auth', authController);
 
 app.listen(PORT, HOST, () => console.log(`Server is running one ${HOST}:${PORT}`));
+process.on('SIGINT', () => process.exit());
