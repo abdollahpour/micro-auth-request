@@ -46,7 +46,7 @@ stages:
   - name: deploy production
     if: branch = master
   - name: deploy dev
-    if: branch != master
+    if: branch = develop
 
 cache: npm
 notifications:
