@@ -23,7 +23,7 @@ if (!privateKey || !publicKey) {
 }
 
 const sign = (user) => jwt.sign(user, privateKey, { algorithm: 'RS256' });
-const verify = (token) =>  jwt.verify(token, publicKey);
+const verify = (token) => jwt.verify(token, publicKey);
 
 module.exports = {
     sign,
