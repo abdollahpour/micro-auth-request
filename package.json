@@ -1,16 +1,18 @@
 {
   "name": "micro-auth-request",
-  "version": "0.1.3",
+  "version": "0.1.4",
   "description": "Simple & fast authentication for Kubernetes ingress using Google OAuth2",
-  "main": "app.js",
+  "main": "lib/app.js",
   "scripts": {
-    "start": "node app.js",
+    "start": "node lib/app.js",
     "test": "jest",
+    "test:watch": "jest --watchAll",
     "test:coverage": "jest --coverage",
     "test:coveralls": "jest --coverage && coveralls < coverage/lcov.info",
-    "lint": "eslint '**/*.js'"
+    "lint": "eslint '**/*.js'",
+    "prepublish": "babel src --out-dir lib"
   },
-  "bin": "./app.js",
+  "bin": "./lib/app.js",
   "repository": {
     "type": "git",
     "url": "https://github/abdollahpour/micro-auth-request"
@@ -37,10 +39,15 @@
     "node-fetch": "^2.6.0"
   },
   "devDependencies": {
+    "@babel/cli": "^7.8.4",
+    "@babel/core": "^7.9.0",
+    "@babel/preset-env": "^7.9.5",
+    "@babel/preset-es2015": "^7.0.0-beta.53",
+    "babel-eslint": "^10.1.0",
     "coveralls": "^3.0.11",
     "eslint": "^6.8.0",
-    "babel-eslint": "^10.1.0",
     "jest": "^25.3.0",
+    "nock": "^12.0.3",
     "node-mocks-http": "^1.8.1"
   }
 }

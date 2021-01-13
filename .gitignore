@@ -2,4 +2,8 @@
 !.gitignore
 !.travis.yml
 !.eslintrc
-node_modules/
+!.npmignore
+!.babelrc
+/node_modules/
+/lib/
+/coverage/

@@ -34,7 +34,8 @@ const getAuthUrl = (reqUrl) => {
 module.exports = {
     getAuthUrl,
     getToken: async (reqUrl) => {
-        const { tokens } = await getAuthClient(reqUrl).getToken(reqUrl.searchParams.get('code'));
+        const url = new URL(reqUrl);
+        const { tokens } = await getAuthClient(url).getToken(url.searchParams.get('code'));
         return tokens;
     },
     getUser: async (token) => {
