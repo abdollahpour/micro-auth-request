@@ -1,8 +1,12 @@
 const { google } = require('googleapis');
 const fetch = require('node-fetch');
 
-const GOOGLE_CLIENT_ID = process.env.GOOGLE_CLIENT_ID;
-const GOOGLE_CLIENT_SECRET = process.env.GOOGLE_CLIENT_SECRET;
+const GOOGLE_CLIENT_ID = 
+        process.env.GOOGLE_CLIENT_ID ??
+        process.env.OAUTH2_PROXY_CLIENT_SECRET;   // oauth2-proxy alternative
+const GOOGLE_CLIENT_SECRET =
+        process.env.GOOGLE_CLIENT_SECRET ??
+        process.env.OAUTH2_PROXY_COOKIE_SECRET;   // oauth2-proxy alternative
 
 const getAuthClient = (reqUrl) => {
     const url = new URL('/oauth2/callback', reqUrl);
