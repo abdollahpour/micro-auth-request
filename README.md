@@ -61,3 +61,6 @@ If you need another authentication provider rather than Google, implement a new 
 
 # Security
 You need to use this service over SSL and add [HSTS](https://en.wikipedia.org/wiki/HTTP_Strict_Transport_Security) headers. If you use our [helm chart](https://github.com/abdollahpour/micro-auth-request), you'll get them all by default but if you have your own setup you need to handle them on the reverse-proxy/ingress.
+
+# TODO
+Add SCIM protocol support to fetch user details
