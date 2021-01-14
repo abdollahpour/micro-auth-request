@@ -1,4 +1,4 @@
-<img src="logo.png" width="360" alt="logo" />
+<img src="https://raw.githubusercontent.com/abdollahpour/micro-auth-request/develop/logo.png?raw=true" width="360" alt="logo" />
 
 [![npm version](https://badge.fury.io/js/micro-auth-request.svg)](https://badge.fury.io/js/micro-auth-request)
 [![License](https://img.shields.io/badge/License-Apache%202.0-blue.svg)](https://opensource.org/licenses/Apache-2.0)
@@ -13,10 +13,10 @@ You can use micro-auth-request just by providing Google client ID and secret wit
 
 # How it works?
 The first time that unauthenticated request comes in:
-<img src="how-it-works-1.png" width="960" alt="How it works" />
+<img src="https://raw.githubusercontent.com/abdollahpour/micro-auth-request/develop/how-it-works-1.png?raw=true" width="960" alt="How it works" />
 
 After that each request gets authenticated using the previously-stored JWT token:
-<img src="how-it-works-2.png" width="960" alt="How it works" />
+<img src="https://raw.githubusercontent.com/abdollahpour/micro-auth-request/develop/how-it-works-2.png?raw=true" width="960" alt="How it works" />
 
 [nginx auth_request](https://nginx.org/en/docs/http/ngx_http_auth_request_module.html) implements client authorization based on the result of a subrequest. The procedure is fairly simple, for any income request, nginx redirect the header of that request to micro-auth-request, based on the request headers (token, cookie, ...), it makes decistion if the user is authenticate or not. The original request will pass to the original service only if micro-auth-request return 200 to nginx. If authentication is required, micro-auth-request helps to use google for it and manage the procedure automatically.
 
